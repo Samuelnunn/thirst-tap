@@ -1,7 +1,24 @@
-const BeerSelectionDropdown = (beerNames) => {
-    return(
-        <select>{beerNames.beerNames.map((x, y) => <option key={y}>{x}</option>)}</select>
-    )
+import { useSelector } from 'react-redux';
+import BeerSelectionDropdown from './BeerSelectionDropdown';
+
+
+const BeerSelection = () => {
+    const beers = useSelector(state => state.drinks.beer);
+    const whatAmI = useSelector(state => state);
+    console.log(whatAmI)
+    
+    const beerNames = beers.map(eachBeerName => eachBeerName.name);
+
+    return beerNames.length ? 
+        <div>
+            <h1> Beers </h1>
+            {/* this is a prop based option to keep our components smaller */}
+            <BeerSelectionDropdown beerNames={beerNames}></BeerSelectionDropdown>
+            {/* this is a simple map straight into the component */}
+            <select>{beerNames.map((x, y) => <option key={y}>{x}</option>)}</select>
+        </div>
+        :
+        <h1> No beers found </h1>
 };
 
-export default BeerSelectionDropdown;
+export default BeerSelection;
