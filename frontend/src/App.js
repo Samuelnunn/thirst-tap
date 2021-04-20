@@ -6,7 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import Selection from './components/Selection';
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import { getBeers } from './store/beer'
+import { getBeers, getWines } from './store/drinks';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(getBeers());
+    dispatch(getWines());
   }, [dispatch]);
 
   return (

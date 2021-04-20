@@ -7,6 +7,8 @@ import BeerSelectionDropdown from '../BeerSelection';
 
 const Selection = () => {
     const beers = useSelector(state => state.drinks.beer);
+    const whatAmI = useSelector(state => state);
+    console.log(whatAmI)
     
     const beerNames = beers.map(eachBeerName => eachBeerName.name);
 
