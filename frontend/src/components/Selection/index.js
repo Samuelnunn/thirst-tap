@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
-import BeerSelection from '../BeerSelection';
+import BeerSelectionDropdown from '../BeerSelection';
 
 
 
@@ -12,9 +12,9 @@ const Selection = () => {
 
     return beerNames.length ? 
         <div>
-            <h1> Drinks </h1>
+            <h1> Beers </h1>
             {/* this is a prop based option to keep our components smaller */}
-            <BeerSelection beerNames={beerNames}></BeerSelection>
+            <BeerSelectionDropdown beerNames={beerNames}></BeerSelectionDropdown>
             {/* this is a simple map straight into the component */}
             <select>{beerNames.map((x, y) => <option key={y}>{x}</option>)}</select>
         </div>

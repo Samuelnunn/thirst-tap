@@ -1,9 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
-
-const BeerSelection = (beerNames) => {
+const BeerSelectionDropdown = (beerNames) => {
     return(
         <select>{beerNames.beerNames.map((x, y) => <option key={y}>{x}</option>)}</select>
     )
 };
 
-export default BeerSelection;
+export default BeerSelectionDropdown;
