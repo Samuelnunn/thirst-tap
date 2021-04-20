@@ -5,9 +5,10 @@ import SignupFormPage from "./components/SignupFormPage";
 // import LoginFormPage from "./components/LoginFormPage";
 import BeerSelection from './components/BeerSelection';
 import WineSelection from './components/WineSelection';
+import CocktailSelection from './components/CocktailSelection';
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import { getBeers, getWines } from './store/drinks';
+import { getBeers, getWines, getCocktails } from './store/drinks';
 
 
 function App() {
@@ -15,8 +16,10 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    //these can go in the actual components, we dont need to mount info on home load
     dispatch(getBeers());
     dispatch(getWines());
+    dispatch(getCocktails());
   }, [dispatch]);
 
   return (
@@ -35,6 +38,9 @@ function App() {
           </Route>
           <Route path="/wine">
             <WineSelection />
+          </Route>
+          <Route path="/cocktail">
+            <CocktailSelection />
           </Route>
         </Switch>
       )}
