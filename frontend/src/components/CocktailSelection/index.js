@@ -1,15 +1,12 @@
 import { useSelector } from 'react-redux';
 import CocktailSelectionDropdown from './CocktailSelectionDropdown';
 
-
 const CocktailSelection = () => {
-    const cocktails = useSelector(state => state.drinks.cocktail);
-    const whatAmI = useSelector(state => state);
-    console.log(whatAmI)
-    
-    const cocktailNames = cocktails.map(eachCocktailName=> eachCocktailName.name);
+    const cocktails = useSelector(state => state.drinks.cocktails);
 
-    return cocktailNames.length ? 
+    const cocktailNames = cocktails.map(eachCocktailName=> eachCocktailName.strDrink);
+
+    return cocktailNames ? 
         <div>
             <h1> Cocktails </h1>
             {/* this is a prop based option to keep our components smaller */}
