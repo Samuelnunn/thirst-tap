@@ -5,7 +5,7 @@ import BeerSelectionDropdown from '../BeerSelection';
 
 
 
-const Selection = () => {
+const BeerSelection = () => {
     const beers = useSelector(state => state.drinks.beer);
     const whatAmI = useSelector(state => state);
     console.log(whatAmI)
@@ -26,4 +26,4 @@ const Selection = () => {
     
 };
 
-export default Selection;
+export default BeerSelection;

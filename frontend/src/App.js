@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 // import LoginFormPage from "./components/LoginFormPage";
-import Selection from './components/Selection';
+import BeerSelection from './components/Selection';
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { getBeers, getWines } from './store/drinks';
@@ -30,7 +30,10 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/beer">
-            <Selection />
+            <BeerSelection />
+          </Route>
+          <Route path="/wine">
+            <BeerSelection />
           </Route>
         </Switch>
       )}
