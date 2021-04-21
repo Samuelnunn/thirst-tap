@@ -1,6 +1,7 @@
 const SET_BEER = "drinks/SET_BEER";
 const SET_WINE = "drinks/SET_WINE";
 const SET_COCKTAIL  = "drinks/SET_COCKTAIL";
+const SET_COCKTAIL_BY_INGREDIENT  = "drinks/SET_COCKTAIL_BY_INGREDIENT";
 
 const COCKTAIL_API_KEY = process.env.REACT_APP_X_RAPIDAPI_KEY;
 
@@ -22,6 +23,13 @@ const setCocktails = (cocktails) => {
     return {
         type: SET_COCKTAIL,
         cocktails
+    };
+};
+
+const setCocktailsByIngredient = (cocktailsByIngredients) => {
+    return {
+        type: SET_COCKTAIL_BY_INGREDIENT,
+        cocktailsByIngredients
     };
 };
 
@@ -49,20 +57,35 @@ export const getCocktails = () => async (dispatch) => {
         headers: {
             "x-rapidapi-key": COCKTAIL_API_KEY,
             "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-            "useQueryString": true
         },
     });
-
     const cocktails = await req.json();
-    console.log(cocktails.drinks)
+    console.log(cocktails)
     if (!cocktails.errors) {
         dispatch(setCocktails(cocktails.drinks));
     }
     return cocktails;
 };
 
-function drinksReducer(state = {beer: [], wine: [], cocktails: []}, 
-                      {type, beer, wine, cocktails}) {
+export const getCocktailsByIngredients = (ingredient) => async (dispatch) => {
+    console.log(ingredient)
+    const req = await fetch(`https://the-cocktail-db.p.rapidapi.com/filter.php?i=${ingredient}`, {
+        "method": "GET",
+        headers: {
+            "x-rapidapi-key": COCKTAIL_API_KEY,
+            "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
+        },
+    });
+    const cocktailsByIngredients = await req.json();
+    console.log(cocktailsByIngredients, '!!!!!!!!!!!!!!!!!!!!!')
+    if (!cocktailsByIngredients.errors) {
+        dispatch(setCocktailsByIngredient(cocktailsByIngredients.drinks));
+    }
+    return cocktailsByIngredients;
+};
+
+function drinksReducer(state = {beer: [], wine: [], cocktails: [], cocktailsByIngredients: []}, 
+                      {type, beer, wine, cocktails, cocktailsByIngredients}) {
     switch (type) {
         case SET_BEER:
             return {...state, beer};
@@ -70,6 +93,8 @@ function drinksReducer(state = {beer: [], wine: [], cocktails: []},
             return {...state, wine};
         case SET_COCKTAIL:
             return {...state, cocktails};
+        case SET_COCKTAIL_BY_INGREDIENT:
+            return {...state, cocktailsByIngredients};
         default:
             return state;
     }

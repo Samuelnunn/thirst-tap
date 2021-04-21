@@ -10,7 +10,6 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { getBeers, getWines, getCocktails } from './store/drinks';
 
-
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
