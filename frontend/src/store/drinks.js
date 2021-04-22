@@ -77,10 +77,12 @@ export const getCocktailsByIngredients = (ingredient) => async (dispatch) => {
         },
     });
     const cocktailsByIngredients = await req.json();
-    console.log(cocktailsByIngredients, '!!!!!!!!!!!!!!!!!!!!!')
+    console.log(cocktailsByIngredients, '!!!!!!!!!!!!!!!!!!!!!');
+
     if (!cocktailsByIngredients.errors) {
         dispatch(setCocktailsByIngredient(cocktailsByIngredients.drinks));
-    }
+    } 
+    // if (cocktailsByIngredients.dri)
     return cocktailsByIngredients;
 };
 

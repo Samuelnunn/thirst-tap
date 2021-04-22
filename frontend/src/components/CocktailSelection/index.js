@@ -42,7 +42,7 @@ const CocktailSelection = () => {
                   <input onChange={updateIngredientSearch} type='search' placeholder='Search by ingredient'></input>
                 </div>
             </form>
-            <CocktailsByIngredientSearch cocktailsByIngredients={cocktailsByIngredients}/>
+            {cocktailsByIngredients && <CocktailsByIngredientSearch cocktailsByIngredients={cocktailsByIngredients}/>}
         </div>
         :
         <h1> No cocktails found </h1>
