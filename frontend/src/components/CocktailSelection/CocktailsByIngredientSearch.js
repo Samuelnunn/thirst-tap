@@ -2,9 +2,8 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const CocktailsByIngredientSearch = (cocktailsByIngredients) => {
+    
     const cocktails = useSelector(state => state.drinks.cocktailsByIngredients);
-
-    // useEffect(() => {}, [cocktailsByIngredients])
 
     if (cocktails == 'None Found') {
         return (
@@ -24,7 +23,7 @@ const CocktailsByIngredientSearch = (cocktailsByIngredients) => {
         })
         :
         null 
-    }
+    };
 };
 
 export default CocktailsByIngredientSearch;
