@@ -8,7 +8,7 @@ const CocktailsByIngredientSearch = (cocktailsByIngredients) => {
     if (cocktails == 'None Found') {
         return (
             <div>
-                <h1>No cocktails found</h1>
+                <h1>No cocktails found</h1> 
             </div>
         )
     } else {
