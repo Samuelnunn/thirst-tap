@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const CocktailsByIngredientSearch = (cocktailsByIngredients) => {
     
     const cocktails = useSelector(state => state.drinks.cocktailsByIngredients);
-
+    console.log(cocktails)
     if (cocktails == 'None Found') {
         return (
             <div>

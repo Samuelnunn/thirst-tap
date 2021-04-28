@@ -31,12 +31,7 @@ const CocktailSelection = () => {
     return cocktailNames.length ? 
         <div>
             <h1> Cocktails </h1>
-            {/* this is a prop based option to keep our components smaller */}
             <CocktailSelectionDropdown cocktailNames={cocktailNames}></CocktailSelectionDropdown>
-            {/* this is a simple map straight into the component */}
-            <select>{cocktailNames.map((x, y) => <option key={y}>{x}</option>)}</select>
-            {/* <Search style={{ textAlign: 'center', color: 'rgb(142, 142, 142)', fontSize: '18px' }} /> */}
-           {/* onSubmit={onSearch} */}
             <form onSubmit={onSearch} >
                 <div>
                   <input onChange={updateIngredientSearch} type='search' placeholder='Search by ingredient'></input>
